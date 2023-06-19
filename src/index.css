@@ -1,0 +1,122 @@
+/* Background of the webapp */
+body {
+  background: #f8e4c5;
+}
+
+/* Logo Alignment */
+#container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Adjust Size of the Logo */
+.crewup-logo {
+  height: 10rem;
+}
+
+/* Aligning Main Heading */
+#hero-text {
+  display: flex;
+  justify-content: center;
+}
+
+/* Main Heading */
+#heading {
+  display: flex;
+  justify-content: center;
+  color: #a64b23;
+  font-family: "Quicksand", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  max-width: 1200px;
+  text-shadow: 2px 2px 4px rgba(246, 180, 100, 0.5);
+  margin-bottom: 0;
+}
+
+/* Sub heading */
+#sub-heading {
+  display: flex;
+  justify-content: center;
+  color: #a64b23;
+  opacity: 0.8;
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-align: center;
+  max-width: 1600px;
+  text-shadow: 2px 2px 4px rgba(246, 180, 100, 0.5);
+}
+
+#documentation {
+  display: flex;
+  justify-content: center;
+}
+
+#doc-form {
+  display: flex;
+  justify-content: center;
+}
+
+.doc-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.doc-inputs label {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-family: "Quicksand", sans-serif;
+  color: #492110;
+  font-weight: 100;
+}
+
+.input-text {
+  width: 500px;
+  height: 100px;
+  vertical-align: top;
+}
+
+.custom-textarea {
+  height: 1rem;
+  width: 20rem;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  color: #333;
+  background-color: #feffde;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.custom-textarea-md {
+  height: 3rem;
+  width: 20rem;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  color: #333;
+  background-color: #feffde;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  resize: vertical;
+}
+
+.custom-textarea-lg {
+  height: 6rem;
+  width: 20rem;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  color: #333;
+  background-color: #feffde;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  resize: vertical;
+}
+
+#download-btn {
+  margin-top: 20px;
+  margin-left: 130px;
+}
