@@ -3,6 +3,7 @@ import { jsPDF } from "jspdf";
 
 function App() {
   const [projectName, setProjectName] = useState("");
+  const [reportDate, setReportDate] = useState("");
   const [projectObj, setProjectObj] = useState("");
   const [teamMembers, setTeamMembers] = useState("");
   const [tasksRoles, setTasksRoles] = useState("");
@@ -22,26 +23,31 @@ function App() {
     doc.setFont("helvetica", "bold");
     doc.text(projectName, startX, 20, { align: "center" }); // Set the font size and align the text to center
 
+    // Report Date
+    doc.setFontSize(14);
+    doc.setFont("helvetica", "bold");
+    doc.text(`Report Date: ${reportDate}`, 10, 40);
+
     // Project Objective
     doc.setFontSize(14);
     doc.setFont("helvetica", "bold");
-    doc.text("Objective", 10, 40);
+    doc.text("Objective", 10, 60);
     doc.setFont("helvetica", "normal");
-    doc.text(projectObj, 10, 50, { maxWidth });
+    doc.text(projectObj, 10, 70, { maxWidth });
 
     // Team Members
     doc.setFont("helvetica", "bold");
-    doc.text("Team Members", 10, 70);
+    doc.text("Team Members", 10, 90);
     doc.setFont("helvetica", "normal");
-    doc.text(teamMembers, 10, 80);
+    doc.text(teamMembers, 10, 100);
 
     // Tasks and Roles
     doc.setFont("helvetica", "bold");
-    doc.text("Tasks & Roles", 10, 100);
+    doc.text("Tasks & Roles", 10, 120);
     doc.setFont("helvetica", "normal");
-    doc.text(tasksRoles, 10, 110);
+    doc.text(tasksRoles, 10, 130);
 
-    doc.save(`${projectName} - Documentation.pdf`);
+    doc.save(`${projectName} - Project Report.pdf`);
   };
 
   return (
@@ -82,8 +88,17 @@ function App() {
               value={projectName}
               onChange={(e) => setProjectName(e.target.value)}
             />
+            {/* Report Date */}
+            <label htmlFor="dateInput">Report Date</label>
+            <input
+              type="date"
+              id="dateInput"
+              value={reportDate}
+              onChange={(e) => setReportDate(e.target.value)}
+              name="dateInput"
+            />
             {/* Project Objective */}
-            <label htmlFor="project-obj">Project Objective</label>
+            <label htmlFor="project-obj">Objective</label>
             <textarea
               id="project-obj"
               className="input-text custom-textarea-lg"
