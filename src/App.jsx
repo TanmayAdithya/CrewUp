@@ -60,21 +60,21 @@ function App() {
 
     // Tasks Completed
     doc.setFont("helvetica", "bold");
-    doc.text("Tasks Completed", 10, 150);
+    doc.text("Tasks Completed", 10, 180);
     doc.setFont("helvetica", "normal");
-    doc.text(tasksCompleted, 10, 160);
+    doc.text(tasksCompleted, 10, 190);
 
     // Tasks In Progress
     doc.setFont("helvetica", "bold");
-    doc.text("Tasks In Progress", 10, 150);
+    doc.text("Tasks In Progress", 10, 210);
     doc.setFont("helvetica", "normal");
-    doc.text(tasksInProgress, 10, 160);
+    doc.text(tasksInProgress, 10, 220);
 
     // Pending Issues
     doc.setFont("helvetica", "bold");
-    doc.text("Pending Issues", 10, 150);
+    doc.text("Pending Issues", 10, 240);
     doc.setFont("helvetica", "normal");
-    doc.text(pendingIssues, 10, 160);
+    doc.text(pendingIssues, 10, 250);
 
     doc.save(`${projectName} - Project Report.pdf`);
   };
