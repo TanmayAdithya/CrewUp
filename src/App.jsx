@@ -8,6 +8,10 @@ function App() {
   const [teamMembers, setTeamMembers] = useState("");
   const [milestonesAchieved, setmilestonesAchieved] = useState("");
   const [challenges, setChallenges] = useState("");
+  const [tasksCompleted, settasksCompleted] = useState("");
+  const [tasksInProgress, settasksInProgress] = useState("");
+  const [pendingIssues, setpendingIssues] = useState("");
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -53,6 +57,24 @@ function App() {
     doc.text("Challenges", 10, 150);
     doc.setFont("helvetica", "normal");
     doc.text(challenges, 10, 160);
+
+    // Tasks Completed
+    doc.setFont("helvetica", "bold");
+    doc.text("Tasks Completed", 10, 150);
+    doc.setFont("helvetica", "normal");
+    doc.text(tasksCompleted, 10, 160);
+
+    // Tasks In Progress
+    doc.setFont("helvetica", "bold");
+    doc.text("Tasks In Progress", 10, 150);
+    doc.setFont("helvetica", "normal");
+    doc.text(tasksInProgress, 10, 160);
+
+    // Pending Issues
+    doc.setFont("helvetica", "bold");
+    doc.text("Pending Issues", 10, 150);
+    doc.setFont("helvetica", "normal");
+    doc.text(pendingIssues, 10, 160);
 
     doc.save(`${projectName} - Project Report.pdf`);
   };
@@ -135,6 +157,30 @@ function App() {
               className="input-text custom-textarea-lg"
               value={challenges}
               onChange={(e) => setChallenges(e.target.value)}
+            ></textarea>
+            {/* Tasks Completed */}
+            <label htmlFor="tasks-completed">Tasks Completed</label>
+            <textarea
+              id="tasks-completed"
+              className="input-text custom-textarea-md"
+              value={tasksCompleted}
+              onChange={(e) => settasksCompleted(e.target.value)}
+            ></textarea>
+            {/* Tasks In Progress */}
+            <label htmlFor="tasks-in-progress">Tasks In Progress</label>
+            <textarea
+              id="tasks-in-progress"
+              className="input-text custom-textarea-md"
+              value={tasksInProgress}
+              onChange={(e) => settasksInProgress(e.target.value)}
+            ></textarea>
+            {/* Pending Issues */}
+            <label htmlFor="pending-issues">Pending Issues</label>
+            <textarea
+              id="pending-issues"
+              className="input-text custom-textarea-md"
+              value={pendingIssues}
+              onChange={(e) => setpendingIssues(e.target.value)}
             ></textarea>
             <div>
               <button id="download-btn" type="submit">
