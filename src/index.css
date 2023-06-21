@@ -65,11 +65,12 @@ body {
 }
 
 .doc-inputs label {
-  margin-top: 20px;
-  margin-bottom: 5px;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  font-weight: 400;
   font-family: "Quicksand", sans-serif;
   color: #492110;
-  font-weight: 100;
 }
 
 .input-text {
@@ -79,10 +80,10 @@ body {
 }
 
 .custom-textarea {
-  height: 1rem;
-  width: 20rem;
+  height: 1.5rem;
+  width: 30rem;
   font-family: Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
   color: #333;
   background-color: #feffde;
   border: 1px solid #ccc;
@@ -92,9 +93,22 @@ body {
 
 .custom-textarea-md {
   height: 3rem;
-  width: 20rem;
+  width: 30rem;
   font-family: Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  color: #333;
+  background-color: #feffde;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 10px;
+  resize: vertical;
+}
+
+.custom-textarea-lg {
+  height: 6rem;
+  width: 30rem;
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
   color: #333;
   background-color: #feffde;
   border: 1px solid #ccc;
@@ -132,20 +146,7 @@ input[type="date"]::-webkit-inner-spin-button {
   display: none;
 }
 
-.custom-textarea-lg {
-  height: 6rem;
-  width: 20rem;
-  font-family: Arial, sans-serif;
-  font-size: 1rem;
-  color: #333;
-  background-color: #feffde;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 10px;
-  resize: vertical;
-}
-
 #download-btn {
   margin-top: 20px;
-  margin-left: 130px;
+  margin-left: 220px;
 }
