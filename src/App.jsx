@@ -6,7 +6,7 @@ function App() {
   const [reportDate, setReportDate] = useState("");
   const [projectObj, setProjectObj] = useState("");
   const [teamMembers, setTeamMembers] = useState("");
-  const [tasksRoles, setTasksRoles] = useState("");
+  const [milestonesAchieved, setmilestonesAchieved] = useState("");
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -43,9 +43,9 @@ function App() {
 
     // Tasks and Roles
     doc.setFont("helvetica", "bold");
-    doc.text("Tasks & Roles", 10, 120);
+    doc.text("Milestones Achieved", 10, 120);
     doc.setFont("helvetica", "normal");
-    doc.text(tasksRoles, 10, 130);
+    doc.text(milestonesAchieved, 10, 130);
 
     doc.save(`${projectName} - Project Report.pdf`);
   };
@@ -113,13 +113,13 @@ function App() {
               value={teamMembers}
               onChange={(e) => setTeamMembers(e.target.value)}
             ></textarea>
-            {/* Tasks and Roles */}
-            <label htmlFor="tasks-roles">Tasks and Roles</label>
+            {/* Milestones Achieved */}
+            <label htmlFor="milestones">Milestones Achieved</label>
             <textarea
-              id="tasks-roles"
+              id="milestones"
               className="input-text custom-textarea-lg"
-              value={tasksRoles}
-              onChange={(e) => setTasksRoles(e.target.value)}
+              value={milestonesAchieved}
+              onChange={(e) => setmilestonesAchieved(e.target.value)}
             ></textarea>
             <div>
               <button id="download-btn" type="submit">
