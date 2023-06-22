@@ -53,11 +53,6 @@ body {
   justify-content: center;
 }
 
-#doc-form {
-  display: flex;
-  justify-content: center;
-}
-
 .doc-inputs {
   display: flex;
   flex-direction: column;
@@ -119,31 +114,13 @@ body {
 
 input[type="date"] {
   appearance: none;
+  color: #492110;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 10px;
   background: #feffde;
   font-size: 1rem;
   padding: 8px;
-}
-input[type="date"]::-webkit-datetime-edit-text {
-  padding: 0 2rem;
-  color: #492110;
-}
-input[type="date"]::-webkit-datetime-edit-month-field {
-  color: #492110;
-  text-transform: uppercase;
-}
-input[type="date"]::-webkit-datetime-edit-day-field {
-  color: #492110;
-  text-transform: uppercase;
-}
-input[type="date"]::-webkit-datetime-edit-year-field {
-  color: #492110;
-  text-transform: uppercase;
-}
-input[type="date"]::-webkit-inner-spin-button {
-  display: none;
 }
 
 #download-btn {
