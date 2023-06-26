@@ -9,7 +9,7 @@ CrewUp offers the following features to enhance project management and collabora
 - **Project Objectives**: Define clear objectives for your project
 - **Team Members**: Manage the list of team members involved in the project
 - **Milestones Achieved**: Keep a record of milestones achieved
-- **Challenges**: Identify and document the challenges faced during the project with the `challenges` state variable.
+- **Challenges**: Identify and document the challenges faced during the project
 - **Tasks Completed**: Track the number of completed tasks
 - **Tasks In Progress**: Monitor the tasks that are currently in progress
 - **Pending Issues**: Keep track of any pending issues or tasks
