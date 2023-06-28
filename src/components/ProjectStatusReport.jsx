@@ -15,14 +15,15 @@ const ProjectStatusReport = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    const doc = new jsPDF();
+    const doc = new jsPDF(); // Creates a new instance of jsPDF
 
-    var docWidth = doc.internal.pageSize.getWidth();
+    // Centering the Project Name
+    const docWidth = doc.internal.pageSize.getWidth();
     const fontSize = 32;
     const projectNameWidth =
       (doc.getStringUnitWidth(projectName) * fontSize) /
       doc.internal.scaleFactor;
-    var startX = (docWidth - projectNameWidth) / 2; // Calculate the starting position to center align the text
+    const startX = (docWidth - projectNameWidth) / 2; // Calculate the starting position to center align the text
 
     // Project Name Heading
     doc.setFontSize(fontSize);
@@ -31,53 +32,66 @@ const ProjectStatusReport = () => {
     doc.text(projectName, startX, 20); // Set the font size and align the text to center
 
     // Report Date
-    doc.setFontSize(14);
+    doc.setFontSize(10);
     doc.addFont("ReadexPro-Medium-normal.ttf", "ReadexPro-Medium", "normal");
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text(`Report Date: ${reportDate}`, 10, 40);
 
     // Project Objective
-    doc.setFontSize(14);
+    doc.setFontSize(15);
     doc.addFont("ReadexPro-Medium-normal.ttf", "ReadexPro-Medium", "normal");
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Objective", 10, 60);
     doc.setFont("ReadexPro-Medium", "normal");
+    doc.setFontSize(9);
     doc.text(projectObj, 10, 70);
 
     // Team Members
+    doc.setFontSize(15);
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Team Members", 10, 90);
     doc.setFont("ReadexPro-Medium", "normal");
+    doc.setFontSize(9);
     doc.text(teamMembers, 10, 100);
 
     // Milestones Achieved
+    doc.setFontSize(15);
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Milestones Achieved", 10, 120);
     doc.setFont("ReadexPro-Medium", "normal");
+    doc.setFontSize(9);
     doc.text(milestonesAchieved, 10, 130);
 
     // Challenges
+    doc.setFontSize(15);
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Challenges", 10, 150);
     doc.setFont("ReadexPro-Medium", "normal");
+    doc.setFontSize(9);
     doc.text(challenges, 10, 160);
 
     // Tasks Completed
+    doc.setFontSize(15);
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Tasks Completed", 10, 180);
     doc.setFont("ReadexPro-Medium", "normal");
+    doc.setFontSize(9);
     doc.text(tasksCompleted, 10, 190);
 
     // Tasks In Progress
+    doc.setFontSize(15);
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Tasks In Progress", 10, 210);
     doc.setFont("ReadexPro-Medium", "normal");
+    doc.setFontSize(9);
     doc.text(tasksInProgress, 10, 220);
 
     // Pending Issues
+    doc.setFontSize(15);
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Pending Issues", 10, 240);
     doc.setFont("ReadexPro-Medium", "normal");
+    doc.setFontSize(9);
     doc.text(pendingIssues, 10, 250);
 
     doc.save(`${projectName} - Project Report.pdf`);
