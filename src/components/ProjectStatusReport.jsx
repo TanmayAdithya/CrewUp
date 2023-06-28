@@ -43,7 +43,7 @@ const ProjectStatusReport = () => {
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Objective", 10, 60);
     doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(12);
     doc.text(projectObj, 10, 70);
 
     // Team Members
@@ -51,7 +51,7 @@ const ProjectStatusReport = () => {
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Team Members", 10, 90);
     doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(12);
     doc.text(teamMembers, 10, 100);
 
     // Milestones Achieved
@@ -59,7 +59,7 @@ const ProjectStatusReport = () => {
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Milestones Achieved", 10, 120);
     doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(12);
     doc.text(milestonesAchieved, 10, 130);
 
     // Challenges
@@ -67,7 +67,7 @@ const ProjectStatusReport = () => {
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Challenges", 10, 150);
     doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(12);
     doc.text(challenges, 10, 160);
 
     // Tasks Completed
@@ -75,7 +75,7 @@ const ProjectStatusReport = () => {
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Tasks Completed", 10, 180);
     doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(12);
     doc.text(tasksCompleted, 10, 190);
 
     // Tasks In Progress
@@ -83,7 +83,7 @@ const ProjectStatusReport = () => {
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Tasks In Progress", 10, 210);
     doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(12);
     doc.text(tasksInProgress, 10, 220);
 
     // Pending Issues
@@ -91,7 +91,7 @@ const ProjectStatusReport = () => {
     doc.setFont("ReadexPro-Medium", "normal");
     doc.text("Pending Issues", 10, 240);
     doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
+    doc.setFontSize(12);
     doc.text(pendingIssues, 10, 250);
 
     doc.save(`${projectName} - Project Report.pdf`);
