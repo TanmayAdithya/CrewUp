@@ -1,6 +1,16 @@
+import { useState } from "react";
 import ProjectStatusReport from "./components/ProjectStatusReport";
 
 function App() {
+  const [component, setComponent] = useState(null);
+
+  const LoadComponent = async (location) => {
+    const { default: component } = await import(
+      `../src/components/${location}`
+    );
+    setComponent(component);
+  };
+
   return (
     <>
       <div id="header">
@@ -8,12 +18,12 @@ function App() {
           {/* CrewUp Logo */}
           <img
             className="crewup-logo"
-            src="https://i.postimg.cc/Ls7Tth4g/Crew-Up-Logo.png"
+            src="https://i.postimg.cc/BvfYC2wn/Crew-Up-logo-updated.png"
             alt="crewup-image"
           />
           <div>
             <a>
-              <button className="btn about-project-btn">About</button>
+              <button className="btn">About</button>
             </a>
           </div>
         </nav>
@@ -27,10 +37,28 @@ function App() {
       </div>
       <div>
         {/* Main Sub-heading */}
-        <h3 id="sub-heading">
+        <h3 className="sub-heading">
           Create detailed documentation and project reports for your project
           with ease.
         </h3>
+        <h4 className="sub-heading">What would you like to create?</h4>
+      </div>
+      <div>
+        <div className="choose-form">
+          <button
+            className="btn"
+            onClick={() => LoadComponent("ProjectStatusReport")}
+          >
+            Status Report
+          </button>
+          <button
+            className="btn"
+            onClick={() => LoadComponent("ProjectDocumentation")}
+          >
+            Documentation
+          </button>
+          {component}
+        </div>
       </div>
       <ProjectStatusReport />
     </>
