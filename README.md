@@ -1,6 +1,6 @@
 # CrewUp
 
-CrewUp is a project management tool that helps teams collaborate effectively by providing detailed documentation, setting objectives, assigning tasks, and tracking progress.
+CrewUp is a web application designed to assist students in generating comprehensive documentation and status reports for their projects. It provides a user-friendly interface that streamlines the process of creating and managing project-related documentation, allowing students to focus more on their work and less on administrative tasks.
 
 ## Features
 
