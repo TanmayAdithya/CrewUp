@@ -101,7 +101,7 @@ const ProjectStatusReport = () => {
     <>
       {/* This is the section where the user provides information about the project. */}
       <section>
-        <form id="documentation" onSubmit={handleFormSubmit}>
+        <form id="report" onSubmit={handleFormSubmit}>
           <div className="doc-inputs">
             {/* Project Name */}
             <label htmlFor="project-name">Project Name</label>
