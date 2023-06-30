@@ -1,14 +1,12 @@
 import { useState } from "react";
 import ProjectStatusReport from "./components/ProjectStatusReport";
+import ProjectDocumentation from "./components/ProjectDocumentation";
 
 function App() {
-  const [component, setComponent] = useState(null);
+  const [selectedComponent, setSelectedComponent] = useState(null);
 
-  const LoadComponent = async (location) => {
-    const { default: component } = await import(
-      `../src/components/${location}`
-    );
-    setComponent(component);
+  const LoadComponent = (component) => {
+    setSelectedComponent(component);
   };
 
   return (
@@ -47,20 +45,21 @@ function App() {
         <div className="choose-form">
           <button
             className="btn"
-            onClick={() => LoadComponent("ProjectStatusReport")}
+            onClick={() => LoadComponent(<ProjectStatusReport />)}
           >
             Status Report
           </button>
           <button
             className="btn"
-            onClick={() => LoadComponent("ProjectDocumentation")}
+            onClick={() => LoadComponent(<ProjectDocumentation />)}
           >
             Documentation
           </button>
-          {component}
         </div>
+        {selectedComponent && (
+          <div className="component-container">{selectedComponent}</div>
+        )}
       </div>
-      <ProjectStatusReport />
     </>
   );
 }
