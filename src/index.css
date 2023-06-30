@@ -101,6 +101,11 @@ body {
   justify-content: center;
 }
 
+#report {
+  display: flex;
+  justify-content: center;
+}
+
 .doc-inputs {
   display: flex;
   flex-direction: column;
