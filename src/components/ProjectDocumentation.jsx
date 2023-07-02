@@ -1,5 +1,8 @@
 import { useState } from "react";
 import jsPDF from "jspdf";
+import "../fonts/ReadexPro-bold";
+import "../fonts/ReadexPro-normal";
+import "../fonts/ReadexPro-Light-italic";
 
 const ProjectDocumentation = () => {
   const [projectName, setProjectName] = useState("");
@@ -13,6 +16,60 @@ const ProjectDocumentation = () => {
 
     const doc = new jsPDF(); // Creates a new instance of jsPDF
 
+    const maxWidthInMm = 190; // Maximum width in millimeters
+    const lineHeight = 5;
+    const contentX = 10;
+    let currentY = 60;
+
+    function renderInitialSection(heading, text, maxWidthInMm, lineHeight) {
+      const initialheadingY = 50; // Initial position for the heading
+      let y = initialheadingY + 10;
+
+      doc.setFont("ReadexPro", "normal").setFontSize(12);
+      doc.text(heading, contentX, initialheadingY);
+
+      doc.setFont("ReadexPro-Light", "italic").setFontSize(9);
+
+      const lines = doc.splitTextToSize(text, maxWidthInMm);
+
+      lines.forEach((line) => {
+        doc.text(line, contentX, y);
+        y += lineHeight;
+      });
+    }
+
+    function renderTextInSection(body, y) {
+      const lines = doc.splitTextToSize(body, maxWidthInMm);
+
+      lines.forEach((line) => {
+        doc.text(line, contentX, y);
+        y += lineHeight;
+      });
+    }
+
+    function renderSectionWithHeading(heading, body, previoustext) {
+      const previousTextHeightInPoints = doc.getTextDimensions(previoustext).h;
+      const lines = doc.splitTextToSize(previoustext, maxWidthInMm);
+      const previousTextLines = lines.length;
+      const headingY =
+        previousTextHeightInPoints * 0.3528 * previousTextLines * 5; // Position the heading below the text
+      const sectionSpacing = 30; // Adjust this value as desired for the spacing between sections
+
+      doc.setFont("ReadexPro", "normal").setFontSize(12);
+      doc.text(heading, contentX, currentY + headingY);
+
+      doc.setFont("ReadexPro-Light", "italic").setFontSize(9);
+      renderTextInSection(body, currentY + headingY + 10);
+
+      const sectionHeight =
+        doc.getTextDimensions(heading).h +
+        doc.getTextDimensions(body).h +
+        sectionSpacing;
+
+      // Update the current vertical position for the next section
+      currentY += sectionHeight;
+    }
+
     // Centering the Project Name
     const docWidth = doc.internal.pageSize.getWidth();
     const fontSize = 32;
@@ -23,34 +80,30 @@ const ProjectDocumentation = () => {
 
     // Project Name Heading
     doc.setFontSize(fontSize);
-    doc.addFont("ReadexPro-Medium-normal.ttf", "ReadexPro-Medium", "normal");
-    doc.setFont("ReadexPro-Medium", "normal");
+    doc.addFont("ReadexPro-normal.ttf", "ReadexPro", "normal");
+    doc.setFont("ReadexPro", "normal");
     doc.text(projectName, startX, 20); // Set the font size and align the text to center
 
+    // Project Overview
+    renderInitialSection(
+      "Project Overview",
+      projectOverview,
+      maxWidthInMm,
+      lineHeight
+    );
+
     // Hypothesis
-    doc.setFontSize(15);
-    doc.addFont("ReadexPro-Medium-normal.ttf", "ReadexPro-Medium", "normal");
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Hypothesis", 10, 40);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
-    doc.text(hypothesis, 10, 50);
+    renderSectionWithHeading("Hypothesis", hypothesis, projectOverview);
 
     // Result and Analysis
-    doc.setFontSize(15);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Result and Analysis", 10, 70);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
-    doc.text(resultAndAnalysis, 10, 80);
+    renderSectionWithHeading(
+      "Result and Analysis",
+      resultAndAnalysis,
+      hypothesis
+    );
 
     // Conclusion
-    doc.setFontSize(15);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Conclusion", 10, 100);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(9);
-    doc.text(conclusion, 10, 110);
+    renderSectionWithHeading("Conclusion", conclusion, resultAndAnalysis);
 
     doc.save(`${projectName} - Documentation.pdf`);
   };
