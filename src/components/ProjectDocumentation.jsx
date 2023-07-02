@@ -72,7 +72,7 @@ const ProjectDocumentation = () => {
 
     // Centering the Project Name
     const docWidth = doc.internal.pageSize.getWidth();
-    const fontSize = 32;
+    const fontSize = 30;
     const projectNameWidth =
       (doc.getStringUnitWidth(projectName) * fontSize) /
       doc.internal.scaleFactor;
@@ -156,7 +156,7 @@ const ProjectDocumentation = () => {
               onChange={(e) => setConclusion(e.target.value)}
             ></textarea>
             <div>
-              <button id="download-btn" type="submit">
+              <button className="download-btn" type="submit">
                 Download
               </button>
             </div>

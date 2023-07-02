@@ -206,7 +206,7 @@ const ProjectStatusReport = () => {
               onChange={(e) => setpendingIssues(e.target.value)}
             ></textarea>
             <div>
-              <button id="download-btn" type="submit">
+              <button className="download-btn" type="submit">
                 Download
               </button>
             </div>
