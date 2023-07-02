@@ -1,5 +1,8 @@
 import { useState } from "react";
 import jsPDF from "jspdf";
+import "../fonts/ReadexPro-bold";
+import "../fonts/ReadexPro-normal";
+import "../fonts/ReadexPro-Light-italic";
 
 const ProjectStatusReport = () => {
   const [projectName, setProjectName] = useState("");
@@ -17,9 +20,62 @@ const ProjectStatusReport = () => {
 
     const doc = new jsPDF(); // Creates a new instance of jsPDF
 
+    const maxWidthInMm = 190; // Maximum width in millimeters
+    const lineHeight = 5;
+    const contentX = 10;
+    let currentY = 60;
+
+    function renderInitialSection(heading, text, maxWidthInMm, lineHeight) {
+      const initialheadingY = 50; // Initial position for the heading
+      let y = initialheadingY + 10;
+
+      doc.setFont("ReadexPro", "normal").setFontSize(12);
+      doc.text(heading, contentX, initialheadingY);
+
+      doc.setFont("ReadexPro-Light", "italic").setFontSize(9);
+
+      const lines = doc.splitTextToSize(text, maxWidthInMm);
+
+      lines.forEach((line) => {
+        doc.text(line, contentX, y);
+        y += lineHeight;
+      });
+    }
+
+    function renderTextInSection(body, y) {
+      const lines = doc.splitTextToSize(body, maxWidthInMm);
+
+      lines.forEach((line) => {
+        doc.text(line, contentX, y);
+        y += lineHeight;
+      });
+    }
+    function renderSectionWithHeading(heading, body, previoustext) {
+      const previousTextHeightInPoints = doc.getTextDimensions(previoustext).h;
+      const lines = doc.splitTextToSize(previoustext, maxWidthInMm);
+      const previousTextLines = lines.length;
+      const headingY =
+        previousTextHeightInPoints * 0.3528 * previousTextLines * 5; // Position the heading below the text
+      const sectionSpacing = 30; // Adjust this value as desired for the spacing between sections
+
+      doc.setFont("ReadexPro", "normal").setFontSize(12);
+      doc.text(heading, contentX, currentY + headingY);
+
+      doc.setFont("ReadexPro-Light", "italic").setFontSize(9);
+      renderTextInSection(body, currentY + headingY + 10);
+
+      const sectionHeight =
+        doc.getTextDimensions(heading).h +
+        doc.getTextDimensions(body).h +
+        sectionSpacing;
+
+      // Update the current vertical position for the next section
+      currentY += sectionHeight;
+    }
+
     // Centering the Project Name
     const docWidth = doc.internal.pageSize.getWidth();
-    const fontSize = 32;
+    const fontSize = 30;
     const projectNameWidth =
       (doc.getStringUnitWidth(projectName) * fontSize) /
       doc.internal.scaleFactor;
@@ -27,72 +83,44 @@ const ProjectStatusReport = () => {
 
     // Project Name Heading
     doc.setFontSize(fontSize);
-    doc.addFont("ReadexPro-Medium-normal.ttf", "ReadexPro-Medium", "normal");
-    doc.setFont("ReadexPro-Medium", "normal");
+    doc.addFont("ReadexPro-bold.ttf", "ReadexPro", "bold");
+    doc.setFont("ReadexPro", "bold");
     doc.text(projectName, startX, 20); // Set the font size and align the text to center
 
     // Report Date
     doc.setFontSize(10);
-    doc.addFont("ReadexPro-Medium-normal.ttf", "ReadexPro-Medium", "normal");
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text(`Report Date: ${reportDate}`, 10, 40);
+    doc.addFont("ReadexPro-normal.ttf", "ReadexPro", "normal");
+    doc.setFont("ReadexPro", "normal");
+    doc.text(`Report Date: ${reportDate}`, 10, 35);
 
-    // Project Objective
-    doc.setFontSize(15);
-    doc.addFont("ReadexPro-Medium-normal.ttf", "ReadexPro-Medium", "normal");
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Objective", 10, 60);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(12);
-    doc.text(projectObj, 10, 70);
+    // Projective Objective
+    renderInitialSection("Objective", projectObj, maxWidthInMm, lineHeight);
 
     // Team Members
-    doc.setFontSize(15);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Team Members", 10, 90);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(12);
-    doc.text(teamMembers, 10, 100);
+    renderSectionWithHeading("Team Members", teamMembers, projectObj);
 
     // Milestones Achieved
-    doc.setFontSize(15);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Milestones Achieved", 10, 120);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(12);
-    doc.text(milestonesAchieved, 10, 130);
+    renderSectionWithHeading(
+      "Milestones Achieved",
+      milestonesAchieved,
+      teamMembers
+    );
 
     // Challenges
-    doc.setFontSize(15);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Challenges", 10, 150);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(12);
-    doc.text(challenges, 10, 160);
+    renderSectionWithHeading("Challenges", challenges, milestonesAchieved);
 
     // Tasks Completed
-    doc.setFontSize(15);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Tasks Completed", 10, 180);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(12);
-    doc.text(tasksCompleted, 10, 190);
+    renderSectionWithHeading("Tasks Completed", tasksCompleted, challenges);
 
     // Tasks In Progress
-    doc.setFontSize(15);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Tasks In Progress", 10, 210);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(12);
-    doc.text(tasksInProgress, 10, 220);
+    renderSectionWithHeading(
+      "Tasks In Progress",
+      tasksInProgress,
+      tasksCompleted
+    );
 
     // Pending Issues
-    doc.setFontSize(15);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.text("Pending Issues", 10, 240);
-    doc.setFont("ReadexPro-Medium", "normal");
-    doc.setFontSize(12);
-    doc.text(pendingIssues, 10, 250);
+    renderSectionWithHeading("Pending Issues", pendingIssues, tasksInProgress);
 
     doc.save(`${projectName} - Project Report.pdf`);
   };
