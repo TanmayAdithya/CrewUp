@@ -12,7 +12,7 @@ const ProjectDocumentation = () => {
   const [conclusion, setConclusion] = useState("");
 
   const handleFormSubmit = (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault();
 
     const doc = new jsPDF(); // Creates a new instance of jsPDF
 
