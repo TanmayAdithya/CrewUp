@@ -1,3 +1,5 @@
+<br>
+
 <p align="center">
   <a href="https://github.com/TanmayAdithya/CrewUp" target="_blank" rel="noopener noreferrer">
     <img width = "600" src="https://i.postimg.cc/8PmMTqXS/Crew-Up-logo-updated-lg.png" alt="CrewUp-logo">
