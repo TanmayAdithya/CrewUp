@@ -16,7 +16,7 @@ const ProjectStatusReport = () => {
   const [pendingIssues, setpendingIssues] = useState("");
 
   const handleFormSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission behavior
 
     const doc = new jsPDF(); // Creates a new instance of jsPDF
 
