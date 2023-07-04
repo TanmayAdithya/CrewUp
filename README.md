@@ -163,7 +163,9 @@ Thanks to [Chart Js](https://www.youtube.com/watch?v=qEhhMZ0ObEw&list=PLc1g3vwxh
 
 ## 🤝 Contributing
 
-WIP
+We appreciate your interest in contributing to our project! Whether you want to report a bug, propose new features, or submit improvements to the existing codebase, your contributions are highly valued.
+
+To get started, please take a moment to review the guidelines outlined in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 <br>
 
