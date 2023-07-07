@@ -1,19 +1,22 @@
-import { useState } from "react";
-import jsPDF from "jspdf";
 import "../fonts/ReadexPro-bold";
 import "../fonts/ReadexPro-normal";
 import "../fonts/ReadexPro-Light-italic";
+import { useState } from "react";
+import jsPDF from "jspdf";
+import axios from "axios";
 
 const ProjectStatusReport = () => {
   const [projectName, setProjectName] = useState("");
   const [reportDate, setReportDate] = useState("");
   const [projectObj, setProjectObj] = useState("");
   const [teamMembers, setTeamMembers] = useState("");
-  const [milestonesAchieved, setmilestonesAchieved] = useState("");
+  const [milestonesAchieved, setMilestonesAchieved] = useState("");
   const [challenges, setChallenges] = useState("");
-  const [tasksCompleted, settasksCompleted] = useState("");
-  const [tasksInProgress, settasksInProgress] = useState("");
-  const [pendingIssues, setpendingIssues] = useState("");
+  const [tasksCompleted, setTasksCompleted] = useState("");
+  const [tasksInProgress, setTasksInProgress] = useState("");
+  const [pendingIssues, setPendingIssues] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -24,6 +27,7 @@ const ProjectStatusReport = () => {
     const lineHeight = 5;
     const contentX = 10;
     let currentY = 60;
+    let sectionSpacing = 30;
 
     function renderInitialSection(heading, text, maxWidthInMm, lineHeight) {
       const initialheadingY = 50; // Initial position for the heading
@@ -56,7 +60,6 @@ const ProjectStatusReport = () => {
       const previousTextLines = lines.length;
       const headingY =
         previousTextHeightInPoints * 0.3528 * previousTextLines * 5; // Position the heading below the text
-      const sectionSpacing = 30; // Adjust this value as desired for the spacing between sections
 
       doc.setFont("ReadexPro", "normal").setFontSize(12);
       doc.text(heading, contentX, currentY + headingY);
@@ -122,14 +125,35 @@ const ProjectStatusReport = () => {
     // Pending Issues
     renderSectionWithHeading("Pending Issues", pendingIssues, tasksInProgress);
 
-    doc.save(`${projectName} - Project Report.pdf`);
+    if (event.target.name === "emailSubmit") {
+      // Convert the jspdf document to a base64-encoded string
+      const base64String = doc.output("datauristring").split(",")[1];
+
+      const payload = {
+        pdfData: base64String,
+        email: userEmail,
+      };
+
+      // This section sends the PDF data to the backend using Axios
+      axios
+        .post("/api/send-pdf", payload)
+        .then((response) => {
+          console.log("PDF sent to backend successfully");
+          console.log("Response data:", response.data); // Accessing response data
+        })
+        .catch((error) => {
+          console.error("Error sending PDF to backend:", error);
+        });
+    } else {
+      doc.save(`${projectName} - Project Report`);
+    }
   };
 
   return (
     <>
       {/* This is the section where the user provides information about the project. */}
       <section>
-        <form id="report" onSubmit={handleFormSubmit}>
+        <form className="report">
           <div className="doc-inputs">
             {/* Project Name */}
             <label htmlFor="project-name">Project Name</label>
@@ -171,7 +195,7 @@ const ProjectStatusReport = () => {
               id="milestones"
               className="input-text custom-textarea-lg"
               value={milestonesAchieved}
-              onChange={(e) => setmilestonesAchieved(e.target.value)}
+              onChange={(e) => setMilestonesAchieved(e.target.value)}
             ></textarea>
             {/* Challenges */}
             <label htmlFor="challenges">Challenges</label>
@@ -187,7 +211,7 @@ const ProjectStatusReport = () => {
               id="tasks-completed"
               className="input-text custom-textarea-md"
               value={tasksCompleted}
-              onChange={(e) => settasksCompleted(e.target.value)}
+              onChange={(e) => setTasksCompleted(e.target.value)}
             ></textarea>
             {/* Tasks In Progress */}
             <label htmlFor="tasks-in-progress">Tasks In Progress</label>
@@ -195,7 +219,7 @@ const ProjectStatusReport = () => {
               id="tasks-in-progress"
               className="input-text custom-textarea-md"
               value={tasksInProgress}
-              onChange={(e) => settasksInProgress(e.target.value)}
+              onChange={(e) => setTasksInProgress(e.target.value)}
             ></textarea>
             {/* Pending Issues */}
             <label htmlFor="pending-issues">Pending Issues</label>
@@ -203,16 +227,49 @@ const ProjectStatusReport = () => {
               id="pending-issues"
               className="input-text custom-textarea-md"
               value={pendingIssues}
-              onChange={(e) => setpendingIssues(e.target.value)}
+              onChange={(e) => setPendingIssues(e.target.value)}
             ></textarea>
-            <div>
-              <button className="download-btn" type="submit">
-                Download
-              </button>
-            </div>
           </div>
         </form>
       </section>
+      {/* User's Email Input Email */}
+      <div className="email-section">
+        <form name="emailSubmit" onSubmit={handleFormSubmit}>
+          <div className="email-checkbox">
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={(e) => setIsChecked(e.target.value)}
+              />
+              Do you want the PDF to be emailed directly to you?
+            </label>
+          </div>
+          {isChecked && (
+            <div>
+              <input
+                className="email-input"
+                type="email"
+                value={userEmail}
+                placeholder="Enter your email"
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
+
+              <button className="email-btn" type="submit">
+                Send
+              </button>
+            </div>
+          )}
+        </form>
+      </div>
+      {/* Download PDF */}
+      <form onSubmit={handleFormSubmit}>
+        <div className="download-section">
+          <button className="download-btn" type="submit">
+            Download
+          </button>
+        </div>
+      </form>
     </>
   );
 };
