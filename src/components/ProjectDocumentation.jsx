@@ -1,8 +1,9 @@
-import { useState } from "react";
-import jsPDF from "jspdf";
 import "../fonts/ReadexPro-bold";
 import "../fonts/ReadexPro-normal";
 import "../fonts/ReadexPro-Light-italic";
+import { useState } from "react";
+import jsPDF from "jspdf";
+import axios from "axios";
 
 const ProjectDocumentation = () => {
   const [projectName, setProjectName] = useState("");
@@ -10,6 +11,8 @@ const ProjectDocumentation = () => {
   const [hypothesis, setHypothesis] = useState("");
   const [resultAndAnalysis, setResultAndAnalysis] = useState("");
   const [conclusion, setConclusion] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -105,7 +108,28 @@ const ProjectDocumentation = () => {
     // Conclusion
     renderSectionWithHeading("Conclusion", conclusion, resultAndAnalysis);
 
-    doc.save(`${projectName} - Documentation.pdf`);
+    if (event.target.name === "emailSubmit") {
+      // Convert the jspdf document to a base64-encoded string
+      const base64String = doc.output("datauristring").split(",")[1];
+
+      const payload = {
+        pdfData: base64String,
+        email: userEmail,
+      };
+
+      // This section sends the PDF data to the backend using Axios
+      axios
+        .post("/api/send-pdf", payload)
+        .then((response) => {
+          console.log("PDF sent to backend successfully");
+          console.log("Response data:", response.data); // Accessing response data
+        })
+        .catch((error) => {
+          console.error("Error sending PDF to backend:", error);
+        });
+    } else {
+      doc.save(`${projectName} - Project Report`);
+    }
   };
 
   return (
@@ -155,14 +179,47 @@ const ProjectDocumentation = () => {
               value={conclusion}
               onChange={(e) => setConclusion(e.target.value)}
             ></textarea>
-            <div>
-              <button className="download-btn" type="submit">
-                Download
-              </button>
-            </div>
           </div>
         </form>
       </section>
+      {/* User's Email Input Email */}
+      <div className="email-section">
+        <form name="emailSubmit" onSubmit={handleFormSubmit}>
+          <div className="email-checkbox">
+            <label>
+              <input
+                type="checkbox"
+                checked={isChecked}
+                onChange={(e) => setIsChecked(e.target.value)}
+              />
+              Do you want the PDF to be emailed directly to you?
+            </label>
+          </div>
+          {isChecked && (
+            <div>
+              <input
+                className="email-input"
+                type="email"
+                value={userEmail}
+                placeholder="Enter your email"
+                onChange={(e) => setUserEmail(e.target.value)}
+              />
+
+              <button className="email-btn" type="submit">
+                Send
+              </button>
+            </div>
+          )}
+        </form>
+      </div>
+      {/* Download PDF */}
+      <form onSubmit={handleFormSubmit}>
+        <div className="download-section">
+          <button className="download-btn" type="submit">
+            Download
+          </button>
+        </div>
+      </form>
     </>
   );
 };
