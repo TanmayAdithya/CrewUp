@@ -35,7 +35,6 @@
 - [💫 Achievements](#-achievements)
 - [🙌 Credits](#-credits)
 - [🤝 Contributing](#-contributing)
-- [📝 Change Log](#-change-log)
 - [📄 License](#-license)
 
 <br>
@@ -170,14 +169,6 @@ To get started, please take a moment to review the guidelines outlined in the [C
 <br>
 
 <!--Specify guidelines and instructions for contributing to the project. 🚀 Include information on how to report issues, submit feature requests, and contribute code. Mention any coding conventions, testing requirements, or development guidelines that contributors should follow.-->
-
-## 📝 Change Log
-
-WIP
-
-<br>
-
-<!--Keep a log of significant changes or updates made to the project. This helps users and contributors stay informed about the project's evolution and the latest features or bug fixes.-->
 
 ## 📄 License
 
