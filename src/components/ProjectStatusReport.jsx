@@ -3,7 +3,6 @@ import "../fonts/ReadexPro-normal";
 import "../fonts/ReadexPro-Light-italic";
 import { useState } from "react";
 import jsPDF from "jspdf";
-import axios from "axios";
 
 const ProjectStatusReport = () => {
   const [projectName, setProjectName] = useState("");
@@ -129,17 +128,23 @@ const ProjectStatusReport = () => {
       // Convert the jspdf document to a base64-encoded string
       const base64String = doc.output("datauristring").split(",")[1];
 
-      const payload = {
-        pdfData: base64String,
-        email: userEmail,
-      };
+      const formData = new FormData();
+      formData.append("pdfData", base64String);
+      formData.append("email", userEmail);
 
-      // This section sends the PDF data to the backend using Axios
-      axios
-        .post("/api/send-pdf", payload)
+      fetch("/api/send-pdf", {
+        method: "POST",
+        body: formData,
+      })
         .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error sending PDF to backend");
+          }
           console.log("PDF sent to backend successfully");
-          console.log("Response data:", response.data); // Accessing response data
+          return response.json(); // Parse the response JSON
+        })
+        .then((data) => {
+          console.log("Response data:", data);
         })
         .catch((error) => {
           console.error("Error sending PDF to backend:", error);
