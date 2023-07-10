@@ -133,23 +133,27 @@ That's it! You have successfully installed and set up CrewUp on your local machi
 
 ## 🎯 Usage
 
-WIP
+Utilising CrewUp is very simple. All you have to do is choose the file you want to download—be it the status report or the documentation—enter your information, click the download button, and presto!
 
 <br>
 
-<!--Explain how to use the project. Include instructions on how to run the application, any command-line options, and how to interact with the project's features. Provide code snippets or examples to help users understand the usage better.-->
 
 ## 🦾 Challenges
 
 - In the beginning I had no idea what I was doing because this was my first time using React and Vite. React hooks and the JSX format really overwhelmed me. I had spent so much time figuring out how everything worked that I had hardly developed the application's main page.
 - I was not confident in my project because the projects of other beginner developers were more advanced in comparison.
 - I had to look up several templates for the forms that I would be including in the project, and while doing so, I found challenging to pick one.
+- As I was unaware of package.json, I had to create and delete the repo three times and made an unsuccessful attempt to upload node modules to github (wasn't fun).
 - It took a long time to import custom fonts into jspdf. I initially gave up, but eventually the issue was resolved, and I'm still shocked at how simple it was.
 - ERRORS, ERRORS, ERRORS! I've never seen so many errors in building projects. I was unable to fix a couple of them no matter how hard I tried, which forced me to put some code changes on hold.
+- Trying to find out how to divide the text into new lines without having them come out of the document, I went through tutorial hell.
+- I wanted to challenge myself this time. I thus attempted to utilise an HTTP request to communicate user data to the backend (which wasn't successful).
 
 ## 💫 Achievements
 
-WIP
+- I was able to use tools I was unaware of before starting the project to create a minimalistic and functional web application.
+- My development abilities were enhanced by building the project consistently over the weeks. It drove me to learn React, JavaScript, and test my Go abilities while also incorporating me to use git.
+- I acquired bug-fixing skills by using Google, StackOverflow, and ChatGPT to seek assistance.
 
 <br>
 
@@ -167,8 +171,6 @@ We appreciate your interest in contributing to our project! Whether you want to 
 To get started, please take a moment to review the guidelines outlined in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
 
 <br>
-
-<!--Specify guidelines and instructions for contributing to the project. 🚀 Include information on how to report issues, submit feature requests, and contribute code. Mention any coding conventions, testing requirements, or development guidelines that contributors should follow.-->
 
 ## 📄 License
 
