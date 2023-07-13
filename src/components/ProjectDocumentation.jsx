@@ -108,18 +108,19 @@ const ProjectDocumentation = () => {
     renderSectionWithHeading("Conclusion", conclusion, resultAndAnalysis);
 
     if (event.target.name === "emailSubmit") {
-      // Convert the jspdf document to a base64-encoded string
-      const base64String = doc.output("datauristring").split(",")[1];
-
       const formData = new FormData();
-      formData.append("pdfData", base64String);
+      // formData.append("pdfData", base64String);
+      formData.append("ProjectName", projectName);
+      formData.append("Overview", projectOverview);
+      formData.append("Hypothesis", hypothesis);
+      formData.append("ResultAndAnalysis", resultAndAnalysis);
+      formData.append("Conclusion", conclusion);
       formData.append("email", userEmail);
 
-      fetch("/api/send-pdf", {
+      fetch(`https://crew-up-sooty.vercel.app/api/send-documentation`, {
         method: "POST",
         body: formData,
       })
-        // .then((response) => response.json())
         .then((response) => {
           console.log(response); // Log the response to inspect its content
           return response.json(); // Continue parsing the response
@@ -197,7 +198,7 @@ const ProjectDocumentation = () => {
                 checked={isChecked}
                 onChange={(e) => setIsChecked(e.target.value)}
               />
-              Do you want the PDF to be emailed directly to you?
+              Do you want the details to be emailed directly to you?
             </label>
           </div>
           {isChecked && (
