@@ -125,20 +125,28 @@ const ProjectStatusReport = () => {
     renderSectionWithHeading("Pending Issues", pendingIssues, tasksInProgress);
 
     if (event.target.name === "emailSubmit") {
-      // Convert the jspdf document to a base64-encoded string
-      const base64String = doc.output("datauristring").split(",")[1];
-
       const formData = new FormData();
-      formData.append("pdfData", base64String);
-      formData.append("email", userEmail);
+      formData.append("Date", reportDate);
+      formData.append("ProjectName", projectName);
+      formData.append("Objective", projectObj);
+      formData.append("Team", teamMembers);
+      formData.append("MilestonesAchieved", milestonesAchieved);
+      formData.append("Challenges", challenges);
+      formData.append("TasksCompleted", tasksCompleted);
+      formData.append("TasksInProgress", tasksInProgress);
+      formData.append("PendingIssues", pendingIssues);
+      formData.append("Email", userEmail);
 
-      fetch("/api/send-pdf", {
+      fetch(`https://crew-up-sooty.vercel.app/api/send-report`, {
         method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
         body: formData,
       })
         .then((response) => {
           if (!response.ok) {
-            throw new Error("Error sending PDF to backend");
+            throw new Error("Error sending data to backend");
           }
           console.log("PDF sent to backend successfully");
           return response.json(); // Parse the response JSON
@@ -147,7 +155,7 @@ const ProjectStatusReport = () => {
           console.log("Response data:", data);
         })
         .catch((error) => {
-          console.error("Error sending PDF to backend:", error);
+          console.error(error);
         });
     } else {
       doc.save(`${projectName} - Project Report`);
@@ -247,7 +255,7 @@ const ProjectStatusReport = () => {
                 checked={isChecked}
                 onChange={(e) => setIsChecked(e.target.value)}
               />
-              Do you want the PDF to be emailed directly to you?
+              Do you want the details to be emailed directly to you?
             </label>
           </div>
           {isChecked && (
