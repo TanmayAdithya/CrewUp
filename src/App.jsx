@@ -20,7 +20,7 @@ function App() {
             alt="crewup-image"
           />
           <div>
-            <a>
+            <a href="https://github.com/TanmayAdithya/CrewUp" target="_blank">
               <button className="btn">About</button>
             </a>
           </div>
