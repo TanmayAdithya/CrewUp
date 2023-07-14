@@ -1,10 +1,12 @@
 <br>
 
+<div id="top">
 <p align="center">
   <a href="https://github.com/TanmayAdithya/CrewUp" target="_blank" rel="noopener noreferrer">
     <img width = "600" src="https://i.postimg.cc/8PmMTqXS/Crew-Up-logo-updated-lg.png" alt="CrewUp-logo">
   </a>
 </p>
+</div>
 
 <div align="center">
 
@@ -180,3 +182,5 @@ To get started, please take a moment to review the guidelines outlined in the [C
 <br>
 
 Licensed under the MIT License.
+
+<p align="right"><a href="#top">⬆️</a></p>
