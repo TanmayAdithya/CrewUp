@@ -51,12 +51,12 @@ The goal of CrewUp is to simplify the documentation and status reporting process
 
 ## ⚒️ Built Using
 
-<img align="left" alt="html" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
-<img align="left" alt="css" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
-<img align="left" alt="javascript" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
-<img align="left" alt="reactjs" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
-<img align="left" alt="npm" width="30px" style="padding-right:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" />
-<img align="left" alt="vite" width="30px" style="padding-right:10px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/1200px-Vitejs-logo.svg.png" />
+<img align="left" alt="html" width="30px" style="padding-right:10px;padding-top:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
+<img align="left" alt="css" width="30px" style="padding-right:10px;padding-top:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
+<img align="left" alt="javascript" width="30px" style="padding-right:10px;padding-top:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+<img align="left" alt="reactjs" width="30px" style="padding-right:10px;padding-top:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+<img align="left" alt="npm" width="30px" style="padding-right:10px;padding-top:10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" />
+<img align="left" alt="vite" width="30px" style="padding-right:10px;padding-top:10px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Vitejs-logo.svg/1200px-Vitejs-logo.svg.png" />
 
 <br>
 <br>
@@ -86,7 +86,7 @@ Before you begin, make sure you have the following software installed on your ma
 
 To install CrewUp, follow these steps:
 
-1. Clone the repository:
+1. Clone the repository
    ```bash
    git clone https://github.com/TanmayAdithya/CrewUp.git
    ```
@@ -131,6 +131,8 @@ The jspdf package is used for PDF generation in CrewUp. CrewUp is built with Rea
 
 That's it! You have successfully installed and set up CrewUp on your local machine. You can now start exploring and working with the web app.
 
+<br>
+
 ## 🎯 Usage
 
 Utilising CrewUp is very simple. All you have to do is choose the file you want to download—be it the status report or the documentation—enter your information, click the download button, and presto!
@@ -148,6 +150,8 @@ Utilising CrewUp is very simple. All you have to do is choose the file you want 
 - ERRORS, ERRORS, ERRORS! I've never seen so many errors in building projects. I was unable to fix a couple of them no matter how hard I tried, which forced me to put some code changes on hold.
 - Trying to find out how to divide the text into new lines without having them come out of the document, I went through tutorial hell.
 - I wanted to challenge myself this time. I thus attempted to utilise an HTTP request to communicate user data to the backend (which wasn't successful).
+
+<br>
 
 ## 💫 Achievements
 
