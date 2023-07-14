@@ -76,7 +76,6 @@ Before you begin, make sure you have the following software installed on your ma
 
 - Node.js (version 14 or higher)
 - npm (Node Package Manager)
-- Go version 1.6 or above
 
 <br>
 
