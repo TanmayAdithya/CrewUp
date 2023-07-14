@@ -127,7 +127,7 @@ To run CrewUp locally, follow these steps:
 
 ---
 
-The jspdf package is used for PDF generation in CrewUp. CrewUp is built with React and utilizes the react and react-dom packages. Development dependencies include ESLint and Vite plugins for React.
+The jspdf package is used for PDF generation in CrewUp. CrewUp is built with React and utilizes the react and react-dom packages. Development dependencies include ESLint and Vite plugins for React. The code formatter used here is Prettier.
 
 That's it! You have successfully installed and set up CrewUp on your local machine. You can now start exploring and working with the web app.
 
