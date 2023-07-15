@@ -55,7 +55,7 @@ body {
 #hero-text {
   display: flex;
   justify-content: center;
-  margin: 32px auto;
+  margin: 100px auto 32px auto;
 }
 
 /* Main Heading */
@@ -193,7 +193,7 @@ input[type="date"] {
 }
 
 .email-input {
-  margin-right: 15px;
+  margin-right: 50px;
   width: 23rem;
   font-family: Arial, sans-serif;
   font-size: 1rem;
