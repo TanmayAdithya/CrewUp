@@ -150,7 +150,7 @@ Utilising CrewUp is very simple. All you have to do is choose the file you want 
 - It took a long time to import custom fonts into jspdf. I initially gave up, but eventually the issue was resolved, and I'm still shocked at how simple it was.
 - ERRORS, ERRORS, ERRORS! I've never seen so many errors in building projects. I was unable to fix a couple of them no matter how hard I tried, which forced me to put some code changes on hold.
 - Trying to find out how to divide the text into new lines without having them come out of the document, I went through tutorial hell.
-- I wanted to challenge myself this time. I thus attempted to utilise an HTTP request to communicate user data to the backend (which wasn't successful).
+- I wanted to challenge myself this time. I thus attempted to utilise an HTTP request to communicate user data to the backend.
 - Initially, I chose to implement the backend of my project using Go because I had fun learning the language and wanted to apply it to one of my projects. However, I encountered several errors that I didn't have the expertise to resolve. As a result, I made the decision to switch to JavaScript for the backend implementation.
 
 <br>
@@ -159,7 +159,8 @@ Utilising CrewUp is very simple. All you have to do is choose the file you want 
 
 - I was able to use tools I was unaware of before starting the project to create a minimalistic and functional web application.
 - My development abilities were enhanced by building the project consistently over the weeks. It drove me to learn React, JavaScript, and test my Go abilities while also incorporating me to use git.
-- I acquired bug-fixing skills by using Google, StackOverflow, and ChatGPT to seek assistance.
+- Even though I had at times wanted to give up my project, I performed at my best despite having no prior experience with the tech stack.
+- Explored and attempted advanced features, such as utilizing an HTTP request to communicate user data to the backend, showcasing a willingness to challenge myself.
 
 <br>
 
