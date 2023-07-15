@@ -151,6 +151,7 @@ Utilising CrewUp is very simple. All you have to do is choose the file you want 
 - ERRORS, ERRORS, ERRORS! I've never seen so many errors in building projects. I was unable to fix a couple of them no matter how hard I tried, which forced me to put some code changes on hold.
 - Trying to find out how to divide the text into new lines without having them come out of the document, I went through tutorial hell.
 - I wanted to challenge myself this time. I thus attempted to utilise an HTTP request to communicate user data to the backend (which wasn't successful).
+- Initially, I chose to implement the backend of my project using Go because I had fun learning the language and wanted to apply it to one of my projects. However, I encountered several errors that I didn't have the expertise to resolve. As a result, I made the decision to switch to JavaScript for the backend implementation.
 
 <br>
 
