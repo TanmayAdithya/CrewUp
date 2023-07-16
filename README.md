@@ -43,9 +43,9 @@
 
 ## 🌟 Overview
 
-Even the best of us get trapped trying to meet a deadline. When students are working on projects for hackathons, scientific fairs, or classwork, there is a lot of disorganization, which can lead to disputes among teammates, but the deadline doesn't shift. It will remain in place even if no progress is made on the project. Well, fear no more! CrewUp is here to save the day!
+While working on a group project, whether it be for a hackathon, a science project, or other academic projects, students frequently become anxious, usually about the deadline and their progress. With the help of appropriate regular status reports and project documentation, students can distribute their workload among teammates and focus on the project. But now there's a new issue: how do they make them? Guess who saves the day in this situation? It's CrewUp!
 
-The goal of CrewUp is to simplify the documentation and status reporting process for student projects. It aims to provide a centralized platform where students can easily create, update, and share project documentation with their team members and instructors. With CrewUp, students can focus more on the actual work involved in their projects and spend less time on administrative tasks.
+The goal of CrewUp is to simplify the documentation and status reporting process for student projects. Students can easily fill in project details and findings, and, with a single click, generate a well-formatted document. They can then download the document as a PDF, or have it sent as an email for easy sharing with team members.
 
 <!--home page screenshot-->
 
