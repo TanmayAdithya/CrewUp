@@ -96,12 +96,13 @@ To install CrewUp, follow these steps:
    ```bash
    cd CrewUp
    ```
-
+   
 3. Install the required packages and libraries
    ```bash
    npm i
    ```
-
+  <br>
+  
 ### 🏃 Running Locally
 
 ---
