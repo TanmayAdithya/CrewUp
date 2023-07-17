@@ -2,6 +2,8 @@ import { useState } from "react";
 import ProjectStatusReport from "./components/ProjectStatusReport";
 import ProjectDocumentation from "./components/ProjectDocumentation";
 
+// Render the document only when an option is selected
+// This improves the user experience by avoiding unnecessary page redirects
 function App() {
   const [selectedComponent, setSelectedComponent] = useState(null);
 

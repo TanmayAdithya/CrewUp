@@ -3,6 +3,7 @@ body {
   background: #59886b;
 }
 
+/* Navbar Styles */
 #navbar {
   display: flex;
   justify-content: space-between;
@@ -23,7 +24,13 @@ body {
   height: 10rem;
 }
 
+/* Normal Buttons */
 .btn {
+  /* Button colors */
+  color: #fff8d9;
+  background-color: #eba83a;
+  border-color: #eba83a;
+  /* Common button styles */
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -40,13 +47,8 @@ body {
   cursor: pointer;
 }
 
-.btn {
-  color: #fff8d9;
-  background-color: #eba83a;
-  border-color: #eba83a;
-}
-
 .btn:hover {
+  /* Button hover styles */
   background-color: #bb371a;
   border-color: #bb371a;
 }
@@ -86,6 +88,7 @@ body {
   margin: 0 20;
 }
 
+/* Choose Form Section */
 .choose-form {
   display: flex;
   align-items: center;
@@ -96,22 +99,26 @@ body {
   margin: 0 10px;
 }
 
+/* Fill documentation section */
 #documentation {
   display: flex;
   justify-content: center;
 }
 
+/* Fill report section */
 .report {
   display: flex;
   justify-content: center;
 }
 
+/* All the input fields */
 .doc-inputs {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
 }
 
+/* Individual input field */
 .doc-inputs label {
   margin-top: 25px;
   margin-bottom: 15px;
@@ -128,6 +135,7 @@ body {
 }
 
 .custom-textarea {
+  /* Styles for a custom textarea */
   height: 1.5rem;
   width: 30rem;
   font-family: Arial, sans-serif;
@@ -140,6 +148,7 @@ body {
 }
 
 .custom-textarea-md {
+  /* Styles for a medium-sized custom textarea */
   height: 3rem;
   width: 30rem;
   font-family: Arial, sans-serif;
@@ -153,6 +162,7 @@ body {
 }
 
 .custom-textarea-lg {
+  /* Styles for a large-sized custom textarea */
   height: 6rem;
   width: 30rem;
   font-family: Arial, sans-serif;
@@ -166,6 +176,7 @@ body {
 }
 
 input[type="date"] {
+  /* Styles for date input */
   appearance: none;
   color: #c05555;
   box-sizing: border-box;
@@ -205,6 +216,7 @@ input[type="date"] {
 }
 
 .email-btn {
+  /* Styles for email 'Send' button */
   color: #fff8d9;
   background-color: #eba83a;
   border-color: #eba83a;
@@ -231,6 +243,7 @@ input[type="date"] {
 }
 
 .download-btn {
+  /* Styles for a download button */
   color: #fff8d9;
   background-color: #eba83a;
   border-color: #eba83a;
@@ -251,6 +264,7 @@ input[type="date"] {
 }
 
 .download-btn:hover {
+  /* Styles for the download button on hover */
   background-color: #bb371a;
   border-color: #bb371a;
 }
