@@ -28,9 +28,9 @@ app.post(
         from: "tanmay.marni@gmail.com",
         subject:
           "Ding Ding! CrewUp Special Delivery: Your Document Soars to New Heights in Your Inbox!",
-        html: (
-          <>
-            <section>
+        html: `
+        <html>
+            <head>
               <strong>
                 "Sending you a pocketful of sunshine and a bundle of smiles.
                 You're as magical as a unicorn and as lovely as a rainbow. May
@@ -39,27 +39,24 @@ app.post(
                 Meow-tastic!🌈😺. Oops! I almost forgot to mention, here's the
                 documentation for our epic project😎!"
               </strong>
-            </section>
-            <head>
               <meta charset="UTF-8" />
-              <title>{projectName}</title>
+              <title>${projectName}</title>
             </head>
             <body>
               <h2>Project Overview</h2>
-              <p>{projectOverview}</p>
+              <p>${projectOverview}</p>
               <br />
               <h2>Hypothesis</h2>
-              <p>{hypothesis}</p>
+              <p>${hypothesis}</p>
               <br />
               <h2>Result And Analysis</h2>
-              <p>{resultAndAnalysis}</p>
+              <p>${resultAndAnalysis}</p>
               <br />
               <h2>Conclusion</h2>
-              <p>{conclusion}</p>
+              <p>${conclusion}</p>
               <br />
             </body>
-          </>
-        ),
+          </html>`,
       };
 
       // The code below is responsible for sending the email using SendGrid
