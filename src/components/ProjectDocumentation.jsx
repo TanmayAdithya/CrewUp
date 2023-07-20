@@ -5,6 +5,7 @@ import { useState } from "react";
 import jsPDF from "jspdf";
 
 const ProjectDocumentation = () => {
+  // State variables for capturing form inputs and user preferences
   const [projectName, setProjectName] = useState("");
   const [projectOverview, setProjectOverview] = useState("");
   const [hypothesis, setHypothesis] = useState("");
@@ -13,6 +14,7 @@ const ProjectDocumentation = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [userEmail, setUserEmail] = useState("");
 
+  // Function to handle form submission
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -23,9 +25,11 @@ const ProjectDocumentation = () => {
     const contentX = 10;
     let currentY = 60;
 
+    /*The `renderInitialSection` function creates the "Project Overview" section of the PDF 
+    and establishes a reference point for positioning subsequent sections based on its content height. */
     function renderInitialSection(heading, text, maxWidthInMm, lineHeight) {
       const initialheadingY = 50; // Initial position for the heading
-      let y = initialheadingY + 10;
+      let y = initialheadingY + 10; // Position of content from Y-axis i.e 10 millimeters
 
       doc.setFont("ReadexPro", "normal").setFontSize(12);
       doc.text(heading, contentX, initialheadingY);
@@ -40,6 +44,7 @@ const ProjectDocumentation = () => {
       });
     }
 
+    /* The function splits the text into new lines when it reaches the maximum width of the page  */
     function renderTextInSection(body, y) {
       const lines = doc.splitTextToSize(body, maxWidthInMm);
 
@@ -49,13 +54,16 @@ const ProjectDocumentation = () => {
       });
     }
 
+    /* The function renders all other sections with their respective headings and content after the initial section, 
+    positioning each section appropriately based on the previous text content. It calculates the height of the previous 
+    text and uses it to position the heading of the current section below it */
     function renderSectionWithHeading(heading, body, previoustext) {
       const previousTextHeightInPoints = doc.getTextDimensions(previoustext).h;
       const lines = doc.splitTextToSize(previoustext, maxWidthInMm);
       const previousTextLines = lines.length;
       const headingY =
         previousTextHeightInPoints * 0.3528 * previousTextLines * 5; // Position the heading below the text
-      const sectionSpacing = 30; // Adjust this value as desired for the spacing between sections
+      const sectionSpacing = 30;
 
       doc.setFont("ReadexPro", "normal").setFontSize(12);
       doc.text(heading, contentX, currentY + headingY);
@@ -86,30 +94,21 @@ const ProjectDocumentation = () => {
     doc.setFont("ReadexPro", "normal");
     doc.text(projectName, startX, 20); // Set the font size and align the text to center
 
-    // Project Overview
-    renderInitialSection(
-      "Project Overview",
-      projectOverview,
-      maxWidthInMm,
-      lineHeight
-    );
+    // Render Project Overview
+    renderInitialSection("Project Overview", projectOverview, maxWidthInMm, lineHeight);
 
-    // Hypothesis
+    // Render Hypothesis
     renderSectionWithHeading("Hypothesis", hypothesis, projectOverview);
 
-    // Result and Analysis
-    renderSectionWithHeading(
-      "Result and Analysis",
-      resultAndAnalysis,
-      hypothesis
-    );
+    // Render Result and Analysis
+    renderSectionWithHeading("Result and Analysis", resultAndAnalysis, hypothesis);
 
-    // Conclusion
+    // Render Conclusion
     renderSectionWithHeading("Conclusion", conclusion, resultAndAnalysis);
 
+    // Handle email submission
     if (event.target.name === "emailSubmit") {
       const formData = new FormData();
-      // formData.append("pdfData", base64String);
       formData.append("ProjectName", projectName);
       formData.append("Overview", projectOverview);
       formData.append("Hypothesis", hypothesis);
@@ -134,7 +133,7 @@ const ProjectDocumentation = () => {
           console.error("Error sending PDF to backend:", error);
         });
     } else {
-      doc.save(`${projectName} - Project Report`);
+      doc.save(`${projectName} - Project Report`); // Download the PDF
     }
   };
 

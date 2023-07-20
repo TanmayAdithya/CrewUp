@@ -5,6 +5,7 @@ import { useState } from "react";
 import jsPDF from "jspdf";
 
 const ProjectStatusReport = () => {
+  // State variables for capturing form inputs and user preferences
   const [projectName, setProjectName] = useState("");
   const [reportDate, setReportDate] = useState("");
   const [projectObj, setProjectObj] = useState("");
@@ -17,20 +18,23 @@ const ProjectStatusReport = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [userEmail, setUserEmail] = useState("");
 
+  // Function to handle form submission
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
     const doc = new jsPDF(); // Creates a new instance of jsPDF
 
-    const maxWidthInMm = 190; // Maximum width in millimeters
+    const maxWidthInMm = 190; // Maximum width of content in the document in millimeters
     const lineHeight = 5;
     const contentX = 10;
     let currentY = 60;
-    let sectionSpacing = 30;
+    let sectionSpacing = 30; // Distance between the sections in the document
 
+    /*The `renderInitialSection` function creates the "Project Objective" section of the PDF 
+    and establishes a reference point for positioning subsequent sections based on its content height. */
     function renderInitialSection(heading, text, maxWidthInMm, lineHeight) {
       const initialheadingY = 50; // Initial position for the heading
-      let y = initialheadingY + 10;
+      let y = initialheadingY + 10; // Position of content from Y-axis i.e 10 millimeters
 
       doc.setFont("ReadexPro", "normal").setFontSize(12);
       doc.text(heading, contentX, initialheadingY);
@@ -45,6 +49,7 @@ const ProjectStatusReport = () => {
       });
     }
 
+    /* The function splits the text into new lines when it reaches the maximum width of the page  */
     function renderTextInSection(body, y) {
       const lines = doc.splitTextToSize(body, maxWidthInMm);
 
@@ -53,12 +58,15 @@ const ProjectStatusReport = () => {
         y += lineHeight;
       });
     }
+
+    /* The function renders all other sections with their respective headings and content after the initial section, 
+    positioning each section appropriately based on the previous text content. It calculates the height of the previous 
+    text and uses it to position the heading of the current section below it */
     function renderSectionWithHeading(heading, body, previoustext) {
       const previousTextHeightInPoints = doc.getTextDimensions(previoustext).h;
       const lines = doc.splitTextToSize(previoustext, maxWidthInMm);
       const previousTextLines = lines.length;
-      const headingY =
-        previousTextHeightInPoints * 0.3528 * previousTextLines * 5; // Position the heading below the text
+      const headingY = previousTextHeightInPoints * 0.3528 * previousTextLines * 5; // Position the heading below the text
 
       doc.setFont("ReadexPro", "normal").setFontSize(12);
       doc.text(heading, contentX, currentY + headingY);
@@ -89,41 +97,34 @@ const ProjectStatusReport = () => {
     doc.setFont("ReadexPro", "bold");
     doc.text(projectName, startX, 20); // Set the font size and align the text to center
 
-    // Report Date
+    // Render Report Date
     doc.setFontSize(10);
     doc.addFont("ReadexPro-normal.ttf", "ReadexPro", "normal");
     doc.setFont("ReadexPro", "normal");
     doc.text(`Report Date: ${reportDate}`, 10, 35);
 
-    // Projective Objective
+    // Render Projective Objective
     renderInitialSection("Objective", projectObj, maxWidthInMm, lineHeight);
 
-    // Team Members
+    // Render Team Members
     renderSectionWithHeading("Team Members", teamMembers, projectObj);
 
-    // Milestones Achieved
-    renderSectionWithHeading(
-      "Milestones Achieved",
-      milestonesAchieved,
-      teamMembers
-    );
+    // Render Milestones Achieved
+    renderSectionWithHeading("Milestones Achieved", milestonesAchieved, teamMembers);
 
-    // Challenges
+    // Render Challenges
     renderSectionWithHeading("Challenges", challenges, milestonesAchieved);
 
-    // Tasks Completed
+    // Render Tasks Completed
     renderSectionWithHeading("Tasks Completed", tasksCompleted, challenges);
 
-    // Tasks In Progress
-    renderSectionWithHeading(
-      "Tasks In Progress",
-      tasksInProgress,
-      tasksCompleted
-    );
+    // Render Tasks In Progress
+    renderSectionWithHeading("Tasks In Progress", tasksInProgress, tasksCompleted);
 
-    // Pending Issues
+    // Render Pending Issues
     renderSectionWithHeading("Pending Issues", pendingIssues, tasksInProgress);
 
+    // Handle email submission
     if (event.target.name === "emailSubmit") {
       const formData = new FormData();
       formData.append("Date", reportDate);
@@ -158,7 +159,7 @@ const ProjectStatusReport = () => {
           console.error(error);
         });
     } else {
-      doc.save(`${projectName} - Project Report`);
+      doc.save(`${projectName} - Project Report`); // Download the PDF
     }
   };
 
