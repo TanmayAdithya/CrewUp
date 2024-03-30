@@ -1,6 +1,6 @@
-import { useState } from "react";
-import ProjectStatusReport from "./components/ProjectStatusReport";
-import ProjectDocumentation from "./components/ProjectDocumentation";
+import { useState } from 'react';
+import ProjectStatusReport from './components/ProjectStatusReport';
+import ProjectDocumentation from './components/ProjectDocumentation';
 
 // Render the document only when an option is selected
 // This improves the user experience by avoiding unnecessary page redirects
@@ -18,7 +18,7 @@ function App() {
           {/* CrewUp Logo */}
           <img
             className="crewup-logo"
-            src="https://i.postimg.cc/BvfYC2wn/Crew-Up-logo-updated.png"
+            src="./src/assets/CrewUp logo updated.png"
             alt="crewup-image"
           />
           <div>
