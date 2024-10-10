@@ -18,7 +18,7 @@ function App() {
           {/* CrewUp Logo */}
           <img
             className="crewup-logo"
-            src="./src/assets/CrewUp logo updated.png"
+            src="https://i.postimg.cc/8PmMTqXS/Crew-Up-logo-updated-lg.png"
             alt="crewup-image"
           />
           <div>
